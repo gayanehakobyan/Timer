@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StopWatch</title>
+    <style>
+	    body{
+			background:rgb(213, 217, 224);	    	
+	    }
+	    h1{
+	    	position: absolute;
+	    	left:40%;
+	    	top:8%;
+	    }
+		#contenier{
+			width: 800px;
+			border: 1px solid black;
+			position: absolute;
+			text-align: center;
+			top:30%;
+			left: 50%;
+			margin-left: -400px;
+			border-radius:15px;	
+			background:black;
+			color: white;
+		}
+		#control{
+			width: 800px;
+			position: absolute;
+			text-align: center;
+			top:38%;
+			left: 50%;
+			margin-left: -400px;
+			padding:10px;		
+		}
+    	#output{
+			font-size: 35px;
+			border-radius:15px;					
+    	}
+    	#start{
+			font-size: 20px;
+			width: 80px;			
+			border-radius:10px;	
+			background:rgb(192, 192, 198);	
+    	}
+    	#stop{
+			font-size: 20px;
+			width: 80px;
+			border-radius:10px;	
+			background:rgb(192, 192, 198) ;	       		
+    	}
+    	#end{
+			font-size: 20px;
+			width: 80px;			
+			border-radius:15px;	
+			background:rgb(192, 192, 198);				    
+    	}
+    	#restart{
+			font-size: 20px;
+			width: 80px;			
+			border-radius:15px;
+			background:rgb(192, 192, 198);			    		
+    	}
+		#lap{
+			box-shadow: 0 0 8px 4px #888;						
+			font-size: 15px;
+			width: 60px;
+			height: 60px;			
+			border-radius:50%;
+			background:black;
+			color:white;	
+
+		}
+		#scrol > div:nth-of-type(2n) {
+			color: red;
+		}
+		#clearlap{
+			box-shadow: 0 0 8px 4px #888;			
+			font-size: 15px;
+			width: 60px;
+			height: 60px;			
+			border-radius:50%;
+			background:black;
+			color:white;			
+			
+		}
+		#scrol{
+			position: absolute;
+			top:60%;
+			left:35%;
+			background: black;
+			color:green;
+			width: 400px;
+    		height:200px;
+    		border-style: dotted;
+    		overflow: scroll;
+    		font-size: 19.5px;  
+    		text-align: center;			
+		}
+    </style>
+</head>
+<body>
+	<h1>STOPWATCH</h1>
+    <div id="contenier">
+        <div id="output">00:00:00</div>
+    </div>    
+        <div id="control">
+            <button id="start"     onclick="start()">Start</button>
+            <button id="stop"      onclick="stop()">Pause</button>
+           	<button id="end"       onclick="end()">Stop</button>
+           	<button id="restart"   onclick="restart()">Restart</button>
+           	<button id="lap"       onclick="lap()">Lap</button>
+           	<button id="clearlap"  onclick="clearlap()">Clear</button>
+        </div>  
+        <div id="scrol"></div>
+
+    <script>
+		var myVar, min, sec, milis;
+      	var time=0;
+      	var temp=1; 
+      	var i=1;
+      	var color=1;
+     	function start() {
+     		document.getElementById("end").style.background="red"
+       		if(temp==1){
+       			myVar= setInterval(count, 100);
+       		}
+       			temp=0;
+      	 }
+      	 function end(){
+			document.getElementById("output").innerHTML="00"+":"+"00"+":"+"00";
+			document.getElementById("end").style.background="rgb("+192+", "+192+", "+198+")"
+			clearInterval(myVar); 
+			clearlap()
+			temp=1;
+			time=0;
+       	}
+       	function stop(){
+       		temp=1;
+       	    clearInterval(myVar);
+       	    document.getElementById("end").style.background="rgb("+192+", "+192+", "+198+")"
+      	}
+       	function count(){
+       	  time++;
+       	  min=Math.floor(time/10/60)
+          sec=Math.floor(time/10%60)
+          milis=time%10;
+
+          if(min<10){
+          min="0"+min
+           } 
+           if(sec<10){
+           sec="0"+sec
+	        }
+	        if(sec>=60){
+	            sec=0;
+	            min++
+	        }
+	        document.getElementById("output").innerHTML=min+":"+sec+":"+milis+"0";
+       	}    	
+       	function restart(){
+			document.getElementById("output").innerHTML="00"+":"+"00"+":"+"00";
+			clearInterval(myVar); 
+			time=0;
+			temp=1;
+			start();  		
+       	}
+       	function lap(){
+
+			
+       		if(time==0){
+       			document.getElementById("scrol").innerHTML="Nothing to LAP";
+       		} 
+       		else if(document.getElementById("scrol").innerHTML=="Nothing to LAP") {
+       			document.getElementById("lap").style.background="green";
+       			document.getElementById("scrol").innerHTML="";
+				document.getElementById("scrol").innerHTML= "Lap"+i+" "+min+":"+sec+":"+milis+"0"+"<br/>";
+				i++			
+       		} else {
+       			document.getElementById("lap").style.background="green";
+				document.getElementById("scrol").innerHTML+="<div>Lap"+i+" "+min+":"+sec+":"+milis+"0"+"</div><hr>";
+				i++;
+       		}
+	
+       	}
+       	function clearlap() {
+       		document.getElementById("scrol").innerHTML="";
+       		document.getElementById("lap").style.background="black"
+       		i=1;
+       	}        	
+
+    </script>
+</body>
+</html>
