@@ -1,0 +1,93 @@
+body{
+  background:rgb(213, 217, 224);	
+}
+
+h1{
+  position: absolute;
+  left:40%;
+  top:8%;
+}
+.container{
+  width: 800px;
+  border: 1px solid black;
+  position: absolute;
+  text-align: center;
+  top:30%;
+  left: 50%;
+  margin-left: -400px;
+  border-radius:15px;	
+  background:black;
+  color: white;  
+}
+.output{
+  font-size: 35px;
+  border-radius:15px;	
+}
+.start{
+  font-size: 20px;
+  width: 100px;			
+  border-radius:10px;	
+  background:rgb(192, 192, 198);	
+}
+.restart{
+  font-size: 20px;
+  width: 80px;			
+  border-radius:15px;
+  background:rgb(192, 192, 198);	
+}
+.pause{
+  font-size: 20px;
+  width: 80px;
+  border-radius:10px;	
+  background:rgb(192, 192, 198) ;	 
+}
+.stop{
+  font-size: 20px;
+  width: 80px;			
+  border-radius:15px;	
+  background:rgb(192, 192, 198);
+}
+.lap{
+  box-shadow: 0 0 8px 4px #888;						
+  font-size: 15px;
+  width: 60px;
+  height: 60px;			
+  border-radius:50%;
+  background:black;
+  color:white;
+}
+.clearlap{
+  box-shadow: 0 0 8px 4px #888;			
+  font-size: 15px;
+  width: 60px;
+  height: 60px;			
+  border-radius:50%;
+  background:black;
+  color:white;			
+  
+}
+.control{
+  width: 800px;
+  position: absolute;
+  text-align: center;
+  top:38%;
+  left: 50%;
+  margin-left: -400px;
+  padding:10px;		
+}
+ol{
+  position: absolute;
+  top:50%;
+  left:35%;
+  background: black;
+  color:green;
+  width: 400px;
+  height:200px;
+  border-style: dotted;
+  overflow: scroll;
+  font-size: 19.5px;  
+  text-align: center;	
+}
+ol > li:nth-of-type(2n) {
+  color: red;
+}
